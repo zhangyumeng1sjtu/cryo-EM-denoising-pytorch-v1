@@ -77,6 +77,8 @@ class ContrastiveLoss(torch.nn.Module):
 
 ## Usage
 ```shell
+pip install -r requirements.txt
+
 python main.py -h
 usage: main.py [-h] [-c CLUSTER_NUM] [-g GPU] [-l LEARNING_RATE]
                [-e EPOCH_NUM] [-b BATCH_SIZE] [-r ROUND_NUM] [-d DATASET_DIR]
