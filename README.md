@@ -10,6 +10,6 @@ Cryo-electron microscopy has gradually become an important technology in the fie
 
 3. Use Contrastive Loss Function to evaluate the dissimilarity between two images.
 
-$L = \frac{1}{2N}\sum_{n=1}^N(1-y)d^2+(y)\max(\text{margin}-d,0)^2$
+$$L = \frac{1}{2N}\sum_{n=1}^N(1-y)d^2+(y)\max(\text{margin}-d,0)^2$$
 
 ## Usage
