@@ -74,7 +74,9 @@ class ContrastiveLoss(torch.nn.Module):
 ```
 
 ### Result
-![loss](cyro-EM/cyro-EM/Loss_Round_3.jpg)
+![loss](cyro-EM/cyro-EM/images/Loss_Round_3.jpg)
+![cluster](cyro-EM/cyro-EM/images/Kmeans_Round_3.jpg)
+![average](cyro-EM/cyro-EM/images/Average_Result_Round_3.jpg)
 
 ## Usage
 ```shell
