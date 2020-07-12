@@ -58,7 +58,38 @@ class SiameseNetwork(nn.Module):
     def forward(self,input1,input2):
         output1 = self.forward_once(input1)
         output2 = self.forward_once(input2)
-        return output1, output2  
+        return output1, output2 
+        
+# ContrastiveLoss Function
+class ContrastiveLoss(torch.nn.Module):
+    def __init__(self,margin=2):
+        super(ContrastiveLoss, self).__init__()
+        self.margin = margin
+  
+    def forward(self,output1,output2,label):
+        euclidean_distance = F.pairwise_distance(output1,output2,keepdim=True)
+        loss_constrastive = torch.mean((1-label)*torch.pow(euclidean_distance,2)+
+                        (label)*torch.pow(torch.clamp(self.margin-euclidean_distance,min=0.0),2))
+        return loss_constrastive
 ```
 
+### Result
+
 ## Usage
+```shell
+python main.py -h
+usage: main.py [-h] [-c CLUSTER_NUM] [-g GPU] [-l LEARNING_RATE]
+               [-e EPOCH_NUM] [-b BATCH_SIZE] [-r ROUND_NUM] [-d DATASET_DIR]
+
+Cryo-EM Images Denoising v1
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -c CLUSTER_NUM, --cluster_num CLUSTER_NUM
+  -g GPU, --gpu GPU
+  -l LEARNING_RATE, --learning_rate LEARNING_RATE
+  -e EPOCH_NUM, --epoch_num EPOCH_NUM
+  -b BATCH_SIZE, --batch_size BATCH_SIZE
+  -r ROUND_NUM, --round_num ROUND_NUM
+  -d DATASET_DIR, --dataset_dir DATASET_DIR
+```
