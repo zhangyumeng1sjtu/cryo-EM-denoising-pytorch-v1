@@ -12,4 +12,53 @@ Cryo-electron microscopy has gradually become an important technology in the fie
 
 $$L = \frac{1}{2N}\sum_{n=1}^N(1-y)d^2+(y)\max(\text{margin}-d,0)^2$$
 
+y = 1 stands for the two images come from different clusters, 
+y = 0 stands for the two images come from same clusters.
+
+4. Kmeans used to assign new labels.
+
+```python
+# Siamese Network
+class SiameseNetwork(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.cnn1 = nn.Sequential(
+            nn.ReflectionPad2d(1),
+            nn.Conv2d(1,4,kernel_size=3),
+            nn.ReLU(inplace=True),
+            nn.BatchNorm2d(4),
+
+            nn.ReflectionPad2d(1),
+            nn.Conv2d(4,8,kernel_size=3),
+            nn.ReLU(inplace=True),
+            nn.BatchNorm2d(8),
+
+            nn.ReflectionPad2d(1),
+            nn.Conv2d(8,8,kernel_size=3),
+            nn.ReLU(inplace=True),
+            nn.BatchNorm2d(8),
+        )
+
+        self.fc1 = nn.Sequential(
+            nn.Linear(8*64*64,500),
+            nn.ReLU(inplace=True),
+
+            nn.Linear(500,100),
+            nn.ReLU(inplace=True),
+
+            nn.Linear(100,20)
+        )
+
+    def forward_once(self,x):
+        output = self.cnn1(x)
+        output = output.view(output.size()[0],-1)
+        output = self.fc1(output)
+        return output
+
+    def forward(self,input1,input2):
+        output1 = self.forward_once(input1)
+        output2 = self.forward_once(input2)
+        return output1, output2  
+```
+
 ## Usage
