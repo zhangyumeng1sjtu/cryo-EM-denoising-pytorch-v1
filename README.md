@@ -74,6 +74,7 @@ class ContrastiveLoss(torch.nn.Module):
 ```
 
 ### Result
+![loss](cyro-EM/cyro-EM/Loss_Round_3.jpg)
 
 ## Usage
 ```shell
