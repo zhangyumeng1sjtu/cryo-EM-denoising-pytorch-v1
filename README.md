@@ -74,11 +74,11 @@ class ContrastiveLoss(torch.nn.Module):
 ```
 
 ### Result
-![loss](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/ALoss_Round_3.jpg)
+![loss](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Loss_Round_3.jpg)
 
 ![cluster](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Kmeans_Round_3.jpg)
 
-![average](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo EM/images/Average_Result_Round_3.jpg)
+![average](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Average_Result_Round_3.jpg)
 
 ## Usage
 ```shell
