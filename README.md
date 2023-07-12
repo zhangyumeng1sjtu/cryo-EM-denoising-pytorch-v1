@@ -1,21 +1,21 @@
-# cyro-EM-denoising-pytorch-v1
+# cryo-EM-denoising-pytorch-v1
 
 ## Principle
-### Backgroud Info
+### Background Info
 Cryo-electron microscopy has gradually become an important technology in the field of structural biology. With the development and improvement of hardware and software, more and more molecular biological structures close to atomic resolution have been resolved. In order to obtain an accurate and reliable three-dimensional structure, it is a very important and critical step to perform cluster analysis on the projection images of cryo-electron microscopy.
 ### Siamese Network
-1. Random choose two images from the dataset, in one cluster or not.
+1. Randomly choose two images from the dataset, in one cluster or not.
 
 2. Send two images into the same networks (feature extractor), and obtain two latent vectors.
 
-3. Use Contrastive Loss Function to evaluate the dissimilarity between two images.
+3. Use the Contrastive Loss Function to evaluate the dissimilarity between two images.
 
 $$L = \frac{1}{2N}\sum_{n=1}^N(1-y)d^2+(y)\max(\text{margin}-d,0)^2$$
 
-y = 1 stands for the two images come from different clusters, 
-y = 0 stands for the two images come from same clusters.
+y = 1 stands for the two images that come from different clusters, 
+y = 0 stands for the two images that come from the same clusters.
 
-4. Kmeans used to assign new labels.
+4. Kmeans are used to assign new labels.
 
 ```python
 # Siamese Network
@@ -75,11 +75,11 @@ class ContrastiveLoss(torch.nn.Module):
 
 ### Result
 #### Loss
-![loss](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Loss_Round_3.jpg)
+![loss](https://github.com/zhangyumeng1sjtu/cryo-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Loss_Round_3.jpg)
 #### Clustering
-![cluster](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Kmeans_Round_3.jpg)
+![cluster](https://github.com/zhangyumeng1sjtu/cryo-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Kmeans_Round_3.jpg)
 #### Denoising Result
-![average](https://github.com/zhangyumeng1sjtu/cyro-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Average_Result_Round_3.jpg)
+![average](https://github.com/zhangyumeng1sjtu/cryo-EM-denoising-pytorch-v1/blob/master/cryo-EM/cryo-EM/images/Average_Result_Round_3.jpg)
 
 ## Usage
 ```shell
